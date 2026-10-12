@@ -1,0 +1,9 @@
+{
+  "name": "husun-al-hifz",
+  "private": true,
+  "type": "module",
+  "description": "حصون الحفظ — تطبيق ويب ثابت لمتابعة حفظ القرآن الكريم بطريقة الحصون الخمسة",
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\""
+  }
+}

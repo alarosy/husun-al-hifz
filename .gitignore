@@ -1,0 +1,9 @@
+# بيانات شخصية: لا تدخل المستودع أبدًا
+my-backup.json
+husun-hifz-*.json
+
+# أدوات محلية
+.claude/
+node_modules/
+.DS_Store
+Thumbs.db

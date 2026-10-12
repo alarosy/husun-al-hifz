@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>حصون الحفظ</title>
+  <meta name="description" content="متابعة برنامج حفظ القرآن الكريم بطريقة الحصون الخمسة: الورد اليومي، والمراجعة، والقراءة المستمرة.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f2f5f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="حصون الحفظ">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./js/ui.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="./icons/icon.svg" alt="" width="30" height="30">
+        <span class="brand-name">حصون الحفظ</span>
+        <span class="brand-sub" id="brand-sub"></span>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="أقسام التطبيق">
+        <button type="button" role="tab" id="t-today" aria-controls="tab-today" aria-selected="true" data-tab="today">اليوم</button>
+        <button type="button" role="tab" id="t-map" aria-controls="tab-map" aria-selected="false" tabindex="-1" data-tab="map">الخريطة والسجل</button>
+        <button type="button" role="tab" id="t-settings" aria-controls="tab-settings" aria-selected="false" tabindex="-1" data-tab="settings">الإعدادات</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="tab-today" role="tabpanel" aria-labelledby="t-today"></section>
+    <section id="tab-map" role="tabpanel" aria-labelledby="t-map" hidden></section>
+    <section id="tab-settings" role="tabpanel" aria-labelledby="t-settings" hidden></section>
+    <noscript><p class="card">يحتاج التطبيق إلى تفعيل JavaScript.</p></noscript>
+  </main>
+
+  <!-- تأكيد «متقنة من قبل» -->
+  <dialog id="dlg-skip" aria-labelledby="dlg-skip-title">
+    <form method="dialog">
+      <h2 id="dlg-skip-title">متقنة من قبل</h2>
+      <p class="muted">لا تتخطَّ هذه الصفحة إلا إذا تحقّق الشرطان معًا:</p>
+      <label class="cond"><input type="checkbox" class="check" name="c1"><span>سمّعتها غيبًا بلا خطأ في يومين مختلفين.</span></label>
+      <label class="cond"><input type="checkbox" class="check" name="c2"><span>الربط سليم مع الصفحتين السابقة والتالية.</span></label>
+      <div class="dlg-actions">
+        <button type="submit" class="btn ochre" value="ok" name="ok" disabled>تأكيد التخطّي</button>
+        <button type="submit" class="btn ghost" value="cancel">إلغاء</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- تصحيح صفحة من الخريطة -->
+  <dialog id="dlg-page" aria-labelledby="dlg-page-title">
+    <form method="dialog">
+      <div class="dlg-page-head">
+        <button type="button" class="btn icon ghost" data-step="-1" aria-label="الصفحة السابقة"></button>
+        <h2 id="dlg-page-title"></h2>
+        <button type="button" class="btn icon ghost" data-step="1" aria-label="الصفحة التالية"></button>
+      </div>
+      <p class="dlg-page-state" id="dlg-page-state"></p>
+      <div class="dlg-actions stack">
+        <button type="submit" class="btn primary" value="m">حُفظت اليوم</button>
+        <button type="submit" class="btn ochre" value="s">متقنة</button>
+        <button type="submit" class="btn danger-ghost" value="clear">إزالة</button>
+        <button type="submit" class="btn ghost" value="cancel">إغلاق</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- تأكيد عام -->
+  <dialog id="dlg-confirm" aria-labelledby="dlg-confirm-title">
+    <form method="dialog">
+      <h2 id="dlg-confirm-title"></h2>
+      <p id="dlg-confirm-msg"></p>
+      <div class="dlg-actions">
+        <button type="submit" class="btn primary" value="ok" id="dlg-confirm-ok"></button>
+        <button type="submit" class="btn ghost" value="cancel">إلغاء</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-msg"></span>
+    <button type="button" class="btn sm" id="toast-action" hidden></button>
+  </div>
+</body>
+</html>
